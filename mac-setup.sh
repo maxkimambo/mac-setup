@@ -150,7 +150,7 @@ defaults write com.apple.Safari WebKitDeveloperExtras -bool true
 #defaults write com.apple.iTunes invertStoreLinks -bool true
 
 # Dock
-defaults write com.apple.Dock autohide -bool true
+defaults write com.apple.Dock autohide -bool false
 defaults write com.apple.dock largesize -int 65
 defaults write com.apple.dock tilesize -int 45
 # Make Dock icons of hidden applications translucent
@@ -161,8 +161,8 @@ defaults write com.apple.dock mouse-over-hilte-stack -bool true
 defaults write enable-spring-load-actions-on-all-items -bool true
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
-# Don’t animate opening applications from the Dock
-defaults write com.apple.dock launchanim -bool false
+# # Don’t animate opening applications from the Dock
+# defaults write com.apple.dock launchanim -bool false
 
 # Spotlight
 # echo $sudo_pass | sudo chmod 0 /System/Library/CoreServices/Spotlight.app
@@ -178,6 +178,10 @@ for app in Safari Finder Dock Mail; do killall "$app"; done
 
 # Do not hide ~/Library in Lion
 chflags nohidden $HOME/Library
+
+# Install X-code cmdline tools 
+sudo xcode-select --install
+
 
 # Install homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
@@ -211,7 +215,7 @@ brew install wget
 
 # Install basic apps 
 brew cask install google-chrome
-brew cask visual-studio-code 
+brew cask install visual-studio-code 
 brew cask install docker
 brew cask install skype
 brew cask install spotify
