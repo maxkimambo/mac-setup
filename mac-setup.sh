@@ -229,14 +229,32 @@ brew cask install mattermost
 brew cask install adobe-acrobat-reader
 brew cask install keepassx
 
+#add visual studio code to path 
+echo "Adding VSCode to path.."
+cat << EOF >> ~/.bash_profile
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+EOF
 
-#install go 
+
+# setup workspace if not there
+if [! -d $HOME/dev/daimler]; then
+    mkdir -p $HOME/dev/daimler/go 
+    ln -s $HOME/work  $HOME/dev/daimler 
+fi
+
+#install golang
 brew install go --cross-compile-common
 mkdir $HOME/go
-export GOPATH=$HOME/go
+export GOPATH=$HOME/dev/daimler/go 
 echo >> "export GOPATH=$HOME/go" $HOME/.bash_rc
 
-
+# install visual studio code extensions 
+code --install-extension DavidAnson.vscode-markdownlint
+code --install-extension PeterJausovec.vscode-docker
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension donjayamanne.python
+code --install-extension lukehoban.Go
 
 # Link all applications
 mkdir $HOME/Applications
@@ -245,17 +263,6 @@ brew linkapps
 # python
 easy_install pip
 pip install --upgrade distribute
-
-# Install rbenv
-# ruby_version=1.9.3-p0
-# ruby-build $ruby_version $HOME/.rbenv/versions/$ruby_version
-# rbenv global $ruby_version
-
-# Install rvm
-bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
-. $HOME/.rvmrc
-rvm install 1.9.3
-rvm --default 1.9.3
 
 # Install pygments
 easy_install pip
@@ -268,99 +275,3 @@ npm install -g gulp grunt
 
 # Install npm
 curl http://npmjs.org/install.sh | clean=no sh
-# Build the index since it takes a while
-npm search asdf
-
-# Node packages
-# npm -g install batman
-# npm -g install changelog
-# npm -g install coffee-script
-# npm -g install docco
-# npm -g install express
-# npm -g install hamljs
-# npm -g install html2jade
-# npm -g install jade
-# npm -g install jake
-# npm -g install jitsu
-# npm -g install js2coffee
-# npm -g install mongodb
-# npm -g install mongoose
-# npm -g install sass
-# npm -g install supervisor
-
-# ZSH
-# wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-# Set theme to kennethreitz in ~/.zshrc
-
-# # pow
-# curl get.pow.cx | sh
-
-# mkdir $HOME/src
-# cd $HOME/src
-
-# # Meslo font
-# wget https://github.com/downloads/andreberg/Meslo-Font/Meslo%20LG%20DZ%20v1.0.zip
-# unzip Meslo\ LG\ DZ\ v1.0.zip
-# cd Meslo\ LG\ DZ\ v1.0
-# for file in *.ttf; do
-#   mv $file $HOME/Library/Fonts/$file;
-# done
-# cd ..
-
-# # Install Hex Color Picker
-# curl -O http://wafflesoftware.net/hexpicker/download/1.6.1/
-# unzip HexColorPicker-1.6.1.zip
-# mv Hex\ Color\ Picker/HexColorPicker.colorPicker $HOME/Library/ColorPickers
-
-# mkdir $HOME/workspace
-
-# # Dotfiles
-# cd $HOME/workspace
-# git clone https://github.com/geetarista/dotfiles.git
-# cd dotfiles
-# sh install.sh
-
-# # Vimfiles
-# cd $HOME/workspace
-# git clone https://github.com/geetarista/vimfiles.git
-# cd vimfiles
-# sh install.sh
-
-# Needs chrome installed
-
-# dotjs
-cd $HOME/src
-git clone https://github.com/defunkt/dotjs
-cd dotjs
-echo "y" | rake install
-
-# set up local crontab from dotfiles
-crontab $HOME/.crontab
-
-# global gems
-# gem install hub
-# gem install ruby-debug19
-# gem install vagrant
-
-# rbenv rehash
-
-# ## Xcode themes
-# mkdir -p $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
-# cd $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
-# # ego
-# curl -O http://developers.enormego.com/assets/egotheme/EGOv2.dvtcolortheme
-
-# # Pastel
-# curl -O https://github.com/dannygreg/Pastel/blob/master/Pastel%20-%20Menlo.dvtcolortheme
-
-# echo $sudo_pass | sudo softwareupdate -i -a
-
-# ssh key
-# ssh-keygen -t rsa
-
-# echo "Enter Github token to add ssh key: "
-# read github_token
-# echo "Enter title for ssh key: "
-# read github_title
-# export github_key=`cat $HOME/.ssh/id_rsa.pub`
-# curl -d "login=geetarista&token=${github_token}&title=`scutil --get ComputerName`&key=${github_key}" http://github.com/api/v2/yaml/user/key/add
