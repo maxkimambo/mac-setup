@@ -12,8 +12,6 @@ if [ ! -e `which gcc` ]; then
   exit 126
 fi
 
-read -p "Password: " sudo_pass
-
 ## Mac OS settings
 # http://www.mactricksandtips.com/2008/02/top-50-terminal-commands.html
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
@@ -222,7 +220,7 @@ EOF
 
 # setup workspace if not there
 mkdir -p $HOME/dev/daimler/go 
-ln -s $HOME/work  $HOME/dev/daimler 
+ln -s  $HOME/dev/daimler $HOME/work 
 #install golang
 brew install go --cross-compile-common 
 echo >> "export GOPATH=$HOME/dev/daimler/go " $HOME/.bash_rc
@@ -240,16 +238,9 @@ brew linkapps
 
 # python
 brew install python3
-sudo easy_install pip
-pip install --upgrade distribute
-
-# Install pygments
-pip install --upgrade distribute
-pip install pygments
 
 # Install node 
 brew install node 
-npm install -g gulp grunt 
 
 # Install npm
 curl http://npmjs.org/install.sh | clean=no sh
