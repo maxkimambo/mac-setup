@@ -6,7 +6,7 @@
 # https://github.com/atmos/cinderella
 # https://github.com/atmos/smeagol
 
-if [ ! -e `which gcc` ]; then
+if ! [ -e `which gcc` ]; then
   echo "gcc must be installed"
   echo "Install Xcode or gcc to use"
   exit 126
@@ -206,19 +206,19 @@ chflags nohidden $HOME/Library
 # Install X-code cmdline tools 
 sudo xcode-select --install
 
-
-# Install homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if ! [ -e `which brew` ]; then 
+    echo "installing brew"
+    # Install homebrew
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
 # Install homebrew packages
-brew install ack
-brew install bcrypt
 brew install curl
 brew install git
 brew install growlnotify
 brew install markdown
-brew install --debug node
-brew install python
+brew install node
+brew install python3
 brew install rsync
 brew install wget
 
@@ -264,7 +264,7 @@ mkdir $HOME/Applications
 brew linkapps
 
 # python
-brew install python3
+
 
 # Install node 
 brew install node 
