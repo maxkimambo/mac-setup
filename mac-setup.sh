@@ -142,14 +142,18 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write com.apple.Safari IncludeDebugMenu 1
 defaults write com.apple.Safari WebKitDeveloperExtras -bool true
 
+# Set screenshot directory
+defaults write com.apple.screencapture location ~/Pictures/Screenshots
 # iTunes
 #defaults write com.apple.iTunes allow-half-stars -bool true
 #defaults write com.apple.iTunes invertStoreLinks -bool true
 
 # Dock
-defaults write com.apple.Dock autohide -bool false
+defaults write com.apple.Dock autohide -bool true
 defaults write com.apple.dock largesize -int 65
 defaults write com.apple.dock tilesize -int 45
+
+
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 # Enable highlight hover effect for the grid view of a stack (Dock)
@@ -160,6 +164,29 @@ defaults write enable-spring-load-actions-on-all-items -bool true
 defaults write com.apple.dock show-process-indicators -bool true
 # # Don’t animate opening applications from the Dock
 # defaults write com.apple.dock launchanim -bool false
+
+# remove autohide delay. 
+defaults write com.apple.Dock autohide-delay -float 0 && killall Dock
+
+# translucent hidden app icons 
+defaults write com.apple.Dock showhidden -bool YES && killall Dock
+
+# Enable Text Selection in Quick Look Windows
+defaults write com.apple.finder QLEnableTextSelection -bool TRUE;killall Finder
+
+#Disable disk image verification 
+defaults write com.apple.frameworks.diskimages skip-verify -bool true && \
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true && \
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+
+#Default finder to home 
+defaults write com.apple.finder NewWindowTarget -string "PfLo" && \
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+
+#disable motion sensor on ssd macs 
+#sudo pmset -a sms 0
+
 
 # Spotlight
 # echo $sudo_pass | sudo chmod 0 /System/Library/CoreServices/Spotlight.app
@@ -245,6 +272,9 @@ brew install node
 # Install npm
 curl http://npmjs.org/install.sh | clean=no sh
 
+# Set login screen text 
+# defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Daimler Mobility Services GmbH"
+
 # setup some aliases 
 cat << EOF >> ~/.bash_profile
 alias ll="ls -la"
@@ -255,6 +285,10 @@ alias ..='cd ..'
 alias ...='cd ../../'
 alias b='cd -'
 alias ~='cd ~'
+alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+alias c='pbcopy'
+alias v='pbpaste'
+
 EOF
 
 #
