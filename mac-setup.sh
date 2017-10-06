@@ -221,11 +221,8 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 EOF
 
 # setup workspace if not there
-if [! -d $HOME/dev/daimler]; then
-    mkdir -p $HOME/dev/daimler/go 
-    ln -s $HOME/work  $HOME/dev/daimler 
-fi
-
+mkdir -p $HOME/dev/daimler/go 
+ln -s $HOME/work  $HOME/dev/daimler 
 #install golang
 brew install go --cross-compile-common 
 echo >> "export GOPATH=$HOME/dev/daimler/go " $HOME/.bash_rc
