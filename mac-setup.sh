@@ -6,7 +6,7 @@
 # https://github.com/atmos/cinderella
 # https://github.com/atmos/smeagol
 
-if [[ ! -e `which gcc` || ! -e `which gcc-4.2` ]]; then
+if [ ! -e `which gcc` ]; then
   echo "gcc must be installed"
   echo "Install Xcode or gcc to use"
   exit 126
