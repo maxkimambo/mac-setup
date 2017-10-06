@@ -260,6 +260,6 @@ EOF
 #
 echo "Done .... Rebooting"
 echo "Press Ctrl + C to cancel"
-sleep 100
+sleep 15
 
 sudo reboot
