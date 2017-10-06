@@ -6,11 +6,11 @@
 # https://github.com/atmos/cinderella
 # https://github.com/atmos/smeagol
 
-# if [[ ! -e `which gcc` || ! -e `which gcc-4.2` ]]; then
-#   echo "gcc must be installed"
-#   echo "Install Xcode or gcc to use"
-#   exit 126
-# fi
+if [[ ! -e `which gcc` || ! -e `which gcc-4.2` ]]; then
+  echo "gcc must be installed"
+  echo "Install Xcode or gcc to use"
+  exit 126
+fi
 
 read -p "Password: " sudo_pass
 
@@ -24,9 +24,8 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
-# Show remaining battery time; hide percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "NO"
-defaults write com.apple.menuextra.battery ShowTime -string "YES"
+# # Show remaining battery %age; 
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -189,29 +188,14 @@ sudo xcode-select --install
 # Install homebrew packages
 brew install ack
 brew install bcrypt
-#brew install -v couchdb
-#brew install ctags
 brew install curl
-# brew install erlang # installed with couchdb
 brew install git
 brew install growlnotify
-# brew install httperf
-# brew install lorem
-# brew install --override-system-vim macvim
 brew install markdown
-# brew install memcached
-# brew install mysql
 brew install --debug node
-# brew install postgresql
 brew install python
-# brew install rebar
-# brew install ruby-build
 brew install rsync
-# brew install sphinx
-# brew install sqlite
-# brew install varnish
 brew install wget
-# brew install wkhtmltopdf
 
 # Install basic apps 
 brew cask install google-chrome
@@ -236,9 +220,6 @@ cat << EOF >> ~/.bash_profile
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 EOF
 
-
-
-
 # setup workspace if not there
 if [! -d $HOME/dev/daimler]; then
     mkdir -p $HOME/dev/daimler/go 
@@ -246,10 +227,8 @@ if [! -d $HOME/dev/daimler]; then
 fi
 
 #install golang
-brew install go --cross-compile-common
-mkdir $HOME/go
-export GOPATH=$HOME/dev/daimler/go 
-echo >> "export GOPATH=$HOME/go" $HOME/.bash_rc
+brew install go --cross-compile-common 
+echo >> "export GOPATH=$HOME/dev/daimler/go " $HOME/.bash_rc
 
 # install visual studio code extensions 
 code --install-extension DavidAnson.vscode-markdownlint
@@ -263,11 +242,11 @@ mkdir $HOME/Applications
 brew linkapps
 
 # python
-easy_install pip
+brew install python3
+sudo easy_install pip
 pip install --upgrade distribute
 
 # Install pygments
-easy_install pip
 pip install --upgrade distribute
 pip install pygments
 
@@ -289,3 +268,10 @@ alias ...='cd ../../'
 alias b='cd -'
 alias ~='cd ~'
 EOF
+
+#
+echo "Done .... Rebooting"
+echo "Press Ctrl + C to cancel"
+sleep 100
+
+sudo reboot
