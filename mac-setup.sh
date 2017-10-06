@@ -237,6 +237,8 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 EOF
 
 
+
+
 # setup workspace if not there
 if [! -d $HOME/dev/daimler]; then
     mkdir -p $HOME/dev/daimler/go 
@@ -275,3 +277,15 @@ npm install -g gulp grunt
 
 # Install npm
 curl http://npmjs.org/install.sh | clean=no sh
+
+# setup some aliases 
+cat << EOF >> ~/.bash_profile
+alias ll="ls -la"
+alias genkey="ssh-keygen -t rsa -b 4096"
+alias copyid="ssh-copy-id"
+alias ll='ls -l -sort'
+alias ..='cd ..'
+alias ...='cd ../../'
+alias b='cd -'
+alias ~='cd ~'
+EOF
