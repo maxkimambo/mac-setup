@@ -260,6 +260,7 @@ code --install-extension PeterJausovec.vscode-docker
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension donjayamanne.python
 code --install-extension lukehoban.Go
+code --install-extension eamodio.gitlens 
 
 # Link all applications
 mkdir $HOME/Applications
