@@ -252,6 +252,8 @@ ln -s  $HOME/dev/daimler $HOME/work
 brew install go --cross-compile-common 
 echo >> "export GOPATH=$HOME/dev/daimler/go " $HOME/.bash_rc
 
+npm install -g eslint
+
 # install visual studio code extensions 
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension PeterJausovec.vscode-docker
@@ -263,14 +265,8 @@ code --install-extension lukehoban.Go
 mkdir $HOME/Applications
 brew linkapps
 
-# python
 
 
-# Install node 
-brew install node 
-
-# Install npm
-curl http://npmjs.org/install.sh | clean=no sh
 
 # Set login screen text 
 # defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Daimler Mobility Services GmbH"
