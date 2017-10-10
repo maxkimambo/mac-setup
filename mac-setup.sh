@@ -237,6 +237,7 @@ brew cask install vlc
 brew cask install mattermost
 brew cask install adobe-acrobat-reader
 brew cask install keepassx
+brew cask install alfred
 
 #add visual studio code to path 
 echo "Adding VSCode to path.."
