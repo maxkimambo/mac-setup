@@ -264,9 +264,12 @@ code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension PeterJausovec.vscode-docker
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension donjayamanne.python
+code --install-extension eamodio.gitlens
+code --install-extension formulahendry.code-runner
+code --install-extension jinsihou.diff-tool
+code --install-extension joelday.docthis
 code --install-extension lukehoban.Go
-code --install-extension eamodio.gitlens 
-
+code --install-extension ms-vscode.azure-account
 # Link all applications
 mkdir $HOME/Applications
 brew linkapps
