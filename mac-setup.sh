@@ -15,7 +15,6 @@ fi
 
 brew install curl
 brew install git
-brew install growlnotify
 brew install markdown
 brew install node
 brew install python3
