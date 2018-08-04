@@ -35,6 +35,12 @@ brew cask install postman
 brew cask install vlc
 brew cask install adobe-acrobat-reader
 
+# install zsh and oh-my-zsh 
+brew install zsh 
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+chsh -s $(which zsh)
+
+
 # Extensions 
 code --install-extension DanielThielking.aws-cloudformation-yaml
 code --install-extension DavidAnson.vscode-markdownlint
