@@ -21,6 +21,7 @@ brew install node
 brew install python3
 brew install rsync
 brew install wget
+brew install tree 
 
 brew cask install google-chrome
 brew cask install visual-studio-code 
@@ -34,6 +35,10 @@ brew cask install firefox
 brew cask install postman
 brew cask install vlc
 brew cask install adobe-acrobat-reader
+brew cask install java 
+brew cask install eclipse-java
+
+
 
 # install zsh and oh-my-zsh 
 brew install zsh 
