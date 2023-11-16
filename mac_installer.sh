@@ -3,7 +3,7 @@
 # include individual scripts
 source install_apps.inc
 source mac_os_x_settings.inc 
-source setup_dot_files.inc
+source install_dotfiles.inc
 
 install_apps
 
